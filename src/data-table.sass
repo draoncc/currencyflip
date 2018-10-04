@@ -1,0 +1,193 @@
+@import './variables'
+
+@import '@material/theme/mixins'
+@import '@material/list/variables'
+
+$divider-color: if(mdc-theme-tone($mdc-theme-background) == "dark", $mdc-list-divider-color-on-dark-bg, $mdc-list-divider-color-on-light-bg)
+
+.mdc-data-table
+  + .mdc-data-table
+    margin-top: 16px
+  display: flex
+  flex-flow: column nowrap
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+  @include mdc-theme-prop(background-color, surface)
+  @include mdc-theme-prop(color, text-primary-on-background)
+
+.mdc-data-table__header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  flex: none
+  flex-flow: row nowrap
+  padding: 0 14px 0 24px
+  height: 64px
+
+.mdc-data-table__header-title
+  display: inline-block
+  font-size: 20px
+  font-weight: 400
+  margin: 0
+
+.mdc-data-table__header-actions
+  display: flex
+  align-items: center
+  flex-flow: row-reverse nowrap
+  @include mdc-theme-prop(color, text-secondary-on-background)
+  \:nth-last-child(n + 2)
+    margin-left: 24px
+
+.mdc-data-table__content
+  width: 100%
+  border-collapse: collapse
+  table-layout: fixed
+  tr
+    &:first-child, &:nth-last-child(n + 2)
+      border-bottom: 1px solid
+      @include mdc-theme-prop(border-color, $divider-color)
+    &.mdc-data-table--selected
+      @include mdc-theme-prop(background-color, mix(mdc-theme-prop-value(on-surface), mdc-theme-prop-value(surface), 12%))
+  td, th
+    padding: 6px 12px
+    text-align: left
+    vertical-align: middle
+  td.mdc-data-table--numeric
+    text-align: right
+  th
+    &.mdc-data-table--numeric
+      text-align: right
+    font-size: 13px
+    line-height: 17px
+    user-select: none
+    @include mdc-theme-prop(color, text-secondary-on-background)
+    &.mdc-data-table--sortable
+      cursor: pointer
+      &.mdc-data-table--sort-asc, &.mdc-data-table--sort-desc
+        @include mdc-theme-prop(color, text-primary-on-background)
+      &.mdc-data-table--sort-asc:before, &.mdc-data-table--sort-desc:before
+        font-family: Material Icons
+        font-size: 16px
+        margin-right: 8px
+        line-height: 16px
+        vertical-align: text-bottom
+      &.mdc-data-table--sort-asc:before
+        content: "arrow_downward"
+      &.mdc-data-table--sort-desc:before
+        content: "arrow_upward"
+  td
+    font-size: 14px
+  tbody tr
+    will-change: background-color
+    transition: background-color 45ms linear
+    &:hover
+      @include mdc-theme-prop(background-color, mix(mdc-theme-prop-value(on-surface), mdc-theme-prop-value(surface), 12%))
+
+.mdc-data-table__footer
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  flex: none
+  flex-flow: row nowrap
+  font-size: 13px
+  @include mdc-theme-prop(color, text-secondary-on-background)
+  padding: 0 14px 0 0
+  border-top: 1px solid
+  @include mdc-theme-prop(border-color, $divider-color)
+  height: 56px
+  .mdc-data-table__per-page
+    display: inline-flex
+    align-items: center
+    justify-content: flex-end
+    flex-flow: row nowrap
+    background-position: right 7px center
+    background-repeat: no-repeat
+    cursor: pointer
+    text-align: right
+    width: 64px
+    &:after
+      content: "arrow_drop_down"
+      font-family: Material Icons
+      font-size: 20px
+      margin: 0 2px
+  .mdc-data-table__results
+    margin-left: 32px
+  .mdc-data-table__prev
+    cursor: pointer
+    margin-left: 32px
+  .mdc-data-table__next
+    cursor: pointer
+    margin-left: 24px
+
+.mdc-data-table
+  [dir="rtl"]
+    td, th
+      text-align: right
+  &[dir="rtl"]
+    td, th
+      text-align: right
+
+.mdc-data-table__content[dir="rtl"]
+  td, th
+    text-align: right
+
+.mdc-data-table
+  [dir="rtl"]
+    td.mdc-data-table--numeric, th.mdc-data-table--numeric
+      text-align: left
+  &[dir="rtl"]
+    td.mdc-data-table--numeric, th.mdc-data-table--numeric
+      text-align: left
+
+.mdc-data-table__content[dir="rtl"]
+  td.mdc-data-table--numeric, th.mdc-data-table--numeric
+    text-align: left
+
+.mdc-data-table
+  [dir="rtl"] .mdc-data-table--sortable
+    &.mdc-data-table--sort-asc:before, &.mdc-data-table--sort-desc:before
+      display: none
+  &[dir="rtl"] .mdc-data-table--sortable
+    &.mdc-data-table--sort-asc:before, &.mdc-data-table--sort-desc:before
+      display: none
+
+.mdc-data-table__content[dir="rtl"] .mdc-data-table--sortable
+  &.mdc-data-table--sort-asc:before, &.mdc-data-table--sort-desc:before
+    display: none
+
+.mdc-data-table
+  [dir="rtl"] .mdc-data-table--sortable
+    &.mdc-data-table--sort-asc:after, &.mdc-data-table--sort-desc:after
+      font-family: Material Icons
+      font-size: 16px
+      vertical-align: text-bottom
+      line-height: 16px
+      margin-left: 8px
+  &[dir="rtl"] .mdc-data-table--sortable
+    &.mdc-data-table--sort-asc:after, &.mdc-data-table--sort-desc:after
+      font-family: Material Icons
+      font-size: 16px
+      margin-left: 8px
+      line-height: 16px
+      vertical-align: text-bottom
+
+.mdc-data-table__content[dir="rtl"] .mdc-data-table--sortable
+  &.mdc-data-table--sort-asc:after, &.mdc-data-table--sort-desc:after
+    font-family: Material Icons
+    font-size: 16px
+    margin-left: 8px
+    line-height: 16px
+    vertical-align: text-bottom
+
+.mdc-data-table
+  [dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-asc:after, &[dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-asc:after
+    content: "arrow_downward"
+
+.mdc-data-table__content[dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-asc:after
+  content: "arrow_downward"
+
+.mdc-data-table
+  [dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-desc:after, &[dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-desc:after
+    content: "arrow_upward"
+
+.mdc-data-table__content[dir="rtl"] .mdc-data-table--sortable.mdc-data-table--sort-desc:after
+  content: "arrow_upward"

@@ -1,0 +1,25 @@
+.app-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-relative-anchor {
+  position: relative;
+}
+
+.app-table__container {
+  display: block;
+  overflow-x: scroll;
+}
+
+.app-table__header-cell--row {
+  position: absolute;
+  left: 0;
+}
+
+.app-table td, 
+.app-table th {
+  width: 47px;
+  height: 47px;
+}

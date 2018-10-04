@@ -1,0 +1,20 @@
+@import './variables'
+
+@import '@material/theme/mixins'
+@import '@material/theme/variables'
+@import '@material/chips/variables'
+
+.mdc-chip
+  will-change: background-color
+  transition: background-color $mdc-chip-opacity-animation-duration linear
+  .mdc-chip__checkmark-path
+    will-change: stroke
+    transition: stroke $mdc-chip-opacity-animation-duration linear
+
+.mdc-chip--selected
+  @include mdc-theme-prop(background-color, mix(mdc-theme-prop-value(on-primary), mdc-theme-prop-value(primary), 12%))
+  @include mdc-theme-prop(color, on-primary)
+  &:hover
+    @include mdc-theme-prop(color, on-primary)
+  .mdc-chip__checkmark-path
+    @include mdc-theme-prop(stroke, on-primary)

@@ -1,0 +1,20 @@
+.mdc-chip {
+  will-change: background-color;
+  transition: background-color 75ms linear; }
+  .mdc-chip .mdc-chip__checkmark-path {
+    will-change: stroke;
+    transition: stroke 75ms linear; }
+
+.mdc-chip--selected {
+  background-color: #b7306b;
+  color: #fff;
+  /* @alternate */
+  color: var(--mdc-theme-on-primary, #fff); }
+  .mdc-chip--selected:hover {
+    color: #fff;
+    /* @alternate */
+    color: var(--mdc-theme-on-primary, #fff); }
+  .mdc-chip--selected .mdc-chip__checkmark-path {
+    stroke: #fff;
+    /* @alternate */
+    stroke: var(--mdc-theme-on-primary, #fff); }

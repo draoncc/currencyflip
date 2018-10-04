@@ -1,0 +1,11 @@
+.app-input-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.app-input {
+  margin: 0 8px; }
+  .app-input:first-child {
+    margin-left: 0; }
+  .app-input:last-child {
+    margin-right: 0; }

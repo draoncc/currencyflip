@@ -1,0 +1,14 @@
+@import './variables'
+
+@import '@material/typography/mdc-typography'
+@import '@material/button/mdc-button'
+@import '@material/chips/mdc-chips'
+@import '@material/textfield/mdc-text-field'
+@import '@material/layout-grid/mdc-layout-grid'
+
+body
+  margin: 0
+  padding: 0
+  @include mdc-typography-base
+  @include mdc-theme-prop(color, text-primary-on-background)
+  @include mdc-theme-prop(background-color, background)
